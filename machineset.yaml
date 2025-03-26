@@ -1,0 +1,82 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  annotations:
+    capacity.cluster-autoscaler.kubernetes.io/labels: kubernetes.io/arch=amd64
+    machine.openshift.io/GPU: "1"
+    machine.openshift.io/memoryMb: "65536"
+    machine.openshift.io/vCPU: "16"
+  labels:
+    machine.openshift.io/cluster-api-cluster: cluster-lrjk5-46rjf
+  name: cluster-lrjk5-46rjf-worker-us-east-2b
+  namespace: openshift-machine-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: cluster-lrjk5-46rjf
+      machine.openshift.io/cluster-api-machineset: cluster-lrjk5-46rjf-worker-us-east-2b
+  template:
+    metadata:
+      labels:
+        machine.openshift.io/cluster-api-cluster: cluster-lrjk5-46rjf
+        machine.openshift.io/cluster-api-machine-role: worker
+        machine.openshift.io/cluster-api-machine-type: worker
+        machine.openshift.io/cluster-api-machineset: cluster-lrjk5-46rjf-worker-us-east-2b
+    spec:
+      providerSpec:
+        value:
+          ami:
+            id: ami-022fbb77a3226215f
+          apiVersion: machine.openshift.io/v1beta1
+          blockDevices:
+          - ebs:
+              encrypted: true
+              iops: 0
+              kmsKey:
+                arn: ""
+              volumeSize: 100
+              volumeType: gp2
+          credentialsSecret:
+            name: aws-cloud-credentials
+          deviceIndex: 0
+          iamInstanceProfile:
+            id: cluster-lrjk5-46rjf-worker-profile
+          instanceType: g5.4xlarge
+          kind: AWSMachineProviderConfig
+          metadata:
+            creationTimestamp: null
+          placement:
+            availabilityZone: us-east-2b
+            region: us-east-2
+          securityGroups:
+          - filters:
+            - name: tag:Name
+              values:
+              - cluster-lrjk5-46rjf-node
+          - filters:
+            - name: tag:Name
+              values:
+              - cluster-lrjk5-46rjf-lb
+          subnet:
+            filters:
+            - name: tag:Name
+              values:
+              - cluster-lrjk5-46rjf-subnet-private-us-east-2b
+          tags:
+          - name: kubernetes.io/cluster/cluster-lrjk5-46rjf
+            value: owned
+          - name: Stack
+            value: project ocp4-cluster-lrjk5
+          - name: env_type
+            value: ocp4-cluster
+          - name: guid
+            value: lrjk5
+          - name: owner
+            value: unknown
+          - name: platform
+            value: RHPDS
+          - name: uuid
+            value: 94c88f8e-3a1d-52f2-9f76-748cd6fd61e4
+          userDataSecret:
+            name: worker-user-data
