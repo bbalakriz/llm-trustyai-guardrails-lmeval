@@ -139,7 +139,9 @@ Some cool queries to try:
 ## Additional exercise on LM-Eval
 If you have additional time, you may try out the LM-Eval. 
 
-Scale down the RHAOI operator deployment to change the trustyai configmap and enable/allow the online mode for downloading the artifacts (models, datasets, tokenizers., etc) from the internet/Hugging Face. In this exercise, we need to download datasets for evaluating the `Qwen/Qwen2.5-0.5B-Instruct` language model. 
+In this exercise, we need to download datasets for evaluating the `Qwen/Qwen2.5-0.5B-Instruct` language model. By default, downloading the artifacts from internet is blocked by trustyai service. 
+
+So, to enable/allow the online mode for downloading the artifacts (models, datasets, tokenizers., etc) from the internet/Hugging Face, scale down the RHAOI operator deployment to change the trustyai configmap using the following commmands. 
 
 ```bash
  oc scale deployment rhods-operator --replicas=0 -n redhat-ods-operator
@@ -172,4 +174,4 @@ inside the lmevaljob's YAML you will see the results of the evaluation, e.g.:
 - [TrustyAI Notes Repo](https://github.com/trustyai-explainability/reference/tree/main)
 - [TrustyAI Github](https://github.com/trustyai-explainability)
 
-Credits: Rob Geada for sharing - https://github.com/trustyai-explainability/trustyai-llm-demo
+Credits: Rob Geada for - https://github.com/trustyai-explainability/trustyai-llm-demo
