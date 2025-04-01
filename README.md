@@ -9,7 +9,7 @@ This exercise was tested against:
 - Node Feature Discovery Operator - 4.17.0-202502250404
 - NVIDIA GPU Operator - 24.9.2
 
-You'll need to [set up your cluster for a GPU deployment](https://github.com/trustyai-explainability/reference/tree/main/llm-deployment/vllm#install-the-gpu-operators). Refer the example machineset with a `g5.4xlarge` instance type to create one if your OpenShift AI cluster doesn't have worker nodes with GPU accelarators. 
+You'll need to set up your cluster for a GPU deployment. Refer the example machineset with a `g5.4xlarge` instance type to create one if your OpenShift AI cluster doesn't have worker nodes with GPU accelarators. 
 
 ### KServe Raw
 This exercise requires the LLM to be deployed as a [KServe Raw deployment](https://access.redhat.com/solutions/7078183)
@@ -46,7 +46,7 @@ Then, in a new terminal tab:
 ````
 
 ## 4. Guardrails
-### 4.1 Deploy the Hateful And Profane (HAP) language detector
+### 4.1 Deploy the Hateful, Abusive And Profane (HAP) content language detector
 ```bash
 oc apply -f guardrails/hap_detector/hap_model_container.yaml
 ```
@@ -59,7 +59,7 @@ oc apply -f guardrails/hap_detector/hap_isvc.yaml
 Wait for the `guardrails-detector-ibm-haop-predictor-xxx` pod to spin up
 
 ### 4.2 Configure the Guardrails orchestrator
-In 'gaurdrails/configmap_orchestrator.yaml', set the following values:
+In `guardrails/configmap_orchestrator.yaml`, set the following values:
 - `chat_generation.service.hostname`: Set this to the name of your Qwen2 predictor service. On my cluster, that's 
 `qwen2-predictor.model-namespace.svc.cluster.local`
 - `detectors.hap.service.hostname`: Set this to the name of your HAP predictor service. On my cluster, that's `guardrails-detector-ibm-hap-predictor.model-namespace.svc.cluster.local`
@@ -136,7 +136,7 @@ Some cool queries to try:
 ```
 
 
-## Bonus
+## Additional exercise on LM-Eval
 If you have additional time, you may try out the LM-Eval. 
 
 Scale down the RHAOI operator deployment to change the trustyai configmap and enable/allow the online mode for downloading the artifacts (models, datasets, tokenizers., etc) from the internet/Hugging Face. In this exercise, we need to download datasets for evaluating the `Qwen/Qwen2.5-0.5B-Instruct` language model. 
