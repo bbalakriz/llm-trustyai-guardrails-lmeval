@@ -12,12 +12,12 @@ This exercise also requires the LLM to be deployed as a [KServe Raw deployment](
 ## 2. Deploy RHOAI with updated DataScienceCluster config
 Delete the exsiting `DSC` in the namespace `redhat-ods-operator`
 ```bash
-oc delete dsc/default-dsc -n redhat-ods-operator`
+oc delete dsc/default-dsc -n redhat-ods-operator
 ```
 
 Review the `dsc.yaml` in this repo and apply it.
 ```bash
-`oc apply -f dsc.yaml`
+oc apply -f dsc.yaml
 ```
 This will use the latest upstream image of TrustyAI. Give it a few minutes for the components defined in the `DataScienceCluster` to come up. 
 
