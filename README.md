@@ -26,20 +26,18 @@ This will use the latest upstream image of TrustyAI. Give it a few minutes for t
 oc new-project model-namespace
 oc apply -f vllm/model_container.yaml
 ```
-The minio container can take a while to spin up - it will be downloading a [Qwen2](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct) from Huggingface and saving it into an emulated AWS data connection.
+The Minio container can take a while to spin up - it will be downloading [Qwen2.5-0.5B-Instruct](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct) from Huggingface and saving it into Minio.
 
 ```bash
 oc apply -f vllm/serving_runtime.yaml
 oc apply -f vllm/isvc_qwen2.yaml
 ```
-Wait for the `qwen2-predictor-XXXXXX` pod to spin up.
-
-You can test the model by sending some prompts to it:
+Wait for the `qwen2-predictor-XXXXXX` pod to spin up. You can test the model by sending some prompts to it. So, do a port forward:
 ```bash
 oc port-forward $(oc get pods -o name | grep qwen2) 8080:8080
 ```
 
-Then, in a new terminal tab:
+And then, in a new terminal tab, try:
 ```bash
 ./curl_model 127.0.0.1:8080 "Hello, tell me about yourself"
 ````
@@ -83,7 +81,7 @@ Review `guardrails/configmap_auxiliary_images.yaml`. The required regex detector
 
 Review `guardrails/configmap_vllm_gateway.yaml`. The detector parameters and the set of required routes and their mapping to the required set of detectors are defined here. 
 
-Now, apply all these three configMaps.
+Now, create all these three configMaps.
 ```bash
 oc apply -f guardrails/configmap_auxiliary_images.yaml
 oc apply -f guardrails/configmap_orchestrator.yaml
@@ -97,6 +95,7 @@ oc apply -f guardrails/gateway_route.yaml
 ```
 
 ### 4.3. Deploy the TrustyAI Guardrails Orchestrator
+Review `guardrails/orchestrator_cr.yaml` and deployt it. 
 ```bash
 oc apply -f guardrails/orchestrator_cr.yaml
 ```
@@ -127,7 +126,7 @@ If everything is okay, it should return:
 }
 ```
 
-### 4.5 Play around with Guardrails
+### 4.5 Play around with the Guardrails Orchestrator
 First, set up:
 
 ```bash
