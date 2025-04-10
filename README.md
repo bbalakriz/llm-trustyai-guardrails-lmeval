@@ -95,7 +95,7 @@ oc apply -f guardrails/gateway_route.yaml
 ```
 
 ### 4.3. Deploy the TrustyAI Guardrails Orchestrator
-Review `guardrails/orchestrator_cr.yaml` and deployt it. 
+Review `guardrails/orchestrator_cr.yaml` and deploy it. 
 ```bash
 oc apply -f guardrails/orchestrator_cr.yaml
 ```
@@ -168,7 +168,7 @@ So, to enable/allow the online mode for downloading the artifacts (models, datas
  oc rollout restart deployment trustyai-service-operator-controller-manager -n redhat-ods-applications
 ```
 
-Deploy the LM EVal job. 
+Deploy the language model eval job. 
 ```bash
 oc apply -f lm-eval/lm-eval-job.yaml
 ```
