@@ -7,7 +7,6 @@ This exercise was tested against:
 - Node Feature Discovery Operator - 4.18.0-202503210101
 - NVIDIA GPU Operator - 24.9.2
 
-### KServe Raw
 This exercise also requires the LLM to be deployed as a [KServe Raw deployment](https://docs.redhat.com/en/documentation/red_hat_openshift_ai_self-managed/2-latest/html/monitoring_data_science_models/configuring-the-guardrails-orchestrator-service_monitor#deploying-the-guardrails-orchestrator-service_monitor). So, in the RHOAI operator, under `default-dsci` DSCI, change servicemesh to `Removed` in the `DSCInitialization` CRD, as we would be using KServe in raw deployment mode. 
 
 ## 2. Deploy RHOAI with updated DataScienceCluster config
