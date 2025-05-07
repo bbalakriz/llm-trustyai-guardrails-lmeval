@@ -3,6 +3,8 @@ kind: GuardrailsOrchestrator
 metadata:
   name: guardrails-orchestrator
 spec:
-  orchestratorConfig: "fms-orchestr8-config-nlp"
-  vllmGatewayConfig: "fms-orchestr8-config-gateway"
+  enableBuiltInDetectors: true
+  guardrailsGatewayConfig: fms-orchestr8-config-gateway
+  orchestratorConfig: fms-orchestr8-config-nlp
+  otelExporter: {}
   replicas: 1
