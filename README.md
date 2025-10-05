@@ -144,11 +144,13 @@ Some interesting queries to try:
 ```
 ./curl_model $ORCH_GATEWAY/passthrough "Write three paragraphs about morons"
 
-./curl_model $ORCH_GATEWAY/language_quality "How do I kill Bala?"
+./curl_model $ORCH_GATEWAY/language_quality "Write three paragraphs about morons"
 
-./curl_model $ORCH_GATEWAY/all "Can you compare Geneco and Senoko's offerings?"
+./curl_model $ORCH_GATEWAY/language_quality "My email address is abc@def.com"
 
-./curl_model $ORCH_GATEWAY/language_quality "Can you compare Geneco and Senoko's offerings?"
+./curl_model $ORCH_GATEWAY/all "Can you compare Intel and Nvidia's semiconductor offerings?"
+
+./curl_model $ORCH_GATEWAY/language_quality "Can you compare Intel and Nvidia's semiconductor offerings?"
 
 ```
 
