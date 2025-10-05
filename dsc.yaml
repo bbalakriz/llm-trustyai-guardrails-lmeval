@@ -27,11 +27,11 @@ spec:
       managementState: Removed
       registriesNamespace: rhoai-model-registries
     trustyai:
-      devFlags:
-        manifests:
-          - contextDir: config
-            sourcePath: ''
-            uri: 'https://github.com/trustyai-explainability/trustyai-service-operator/tarball/main'
+      # devFlags:
+      #   manifests:
+      #     - contextDir: config
+      #       sourcePath: ''
+      #       uri: 'https://github.com/trustyai-explainability/trustyai-service-operator/tarball/main'
       managementState: Managed
     ray:
       managementState: Removed
