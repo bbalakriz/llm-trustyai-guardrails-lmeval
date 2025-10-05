@@ -23,7 +23,7 @@ data:
         output: true      
         detector_params:
           regex:    
-            - \b(?i:nvidia|amd|intel)\b
+            - \b(?i:tuas power|geneco|senoko)\b
       - name: hap
         input: true
         output: true      
