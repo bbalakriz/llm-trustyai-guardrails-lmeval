@@ -146,9 +146,9 @@ Some interesting queries to try:
 
 ./curl_model $ORCH_GATEWAY/language_quality "How do I kill Bala?"
 
-./curl_model $ORCH_GATEWAY/all "Can you compare Tuas Power and Senoko's offerings?"
+./curl_model $ORCH_GATEWAY/all "Can you compare Geneco and Senoko's offerings?"
 
-./curl_model $ORCH_GATEWAY/language_quality "Can you compare Tuas Power and Senoko's offerings?"
+./curl_model $ORCH_GATEWAY/language_quality "Can you compare Geneco and Senoko's offerings?"
 
 ```
 
