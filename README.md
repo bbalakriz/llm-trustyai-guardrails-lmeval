@@ -130,7 +130,7 @@ If everything is okay, it should return:
 First, set up:
 
 ```bash
-ORCH_GATEWAY=https://$(oc get routes guardrails-gateway -o jsonpath='{.spec.host}')
+ORCH_GATEWAY=https://$(oc get routes guardrails-orchestrator -o jsonpath='{.spec.host}')
 ```
 
 The available endpoints are:
