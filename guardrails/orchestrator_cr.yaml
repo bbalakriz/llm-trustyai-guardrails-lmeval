@@ -4,6 +4,7 @@ metadata:
   name: guardrails-orchestrator
 spec:
   enableBuiltInDetectors: true
+  enableGuardrailsGateway: true
   guardrailsGatewayConfig: fms-orchestr8-config-gateway
   orchestratorConfig: fms-orchestr8-config-nlp
   otelExporter: {}
